@@ -2,6 +2,7 @@ import Banner from "@/components/Banner";
 import Header from "@/components/Header";
 import requests from "../utils/requests"
 import { Movie } from "@/typings";
+import Row from "@/components/Row";
 
 
 interface Props {
@@ -16,7 +17,14 @@ interface Props {
 }
 
 export default function Home({
-  netflixOriginals
+  netflixOriginals,
+  actionMovies,
+  comedyMovies,
+  documentaries,
+  horrorMovies,
+  romanceMovies,
+  topRated,
+  trendingNow
 }: Props) {
  
   return (
@@ -25,7 +33,18 @@ export default function Home({
     <Header />
     <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
       <Banner netflixOriginals={netflixOriginals} />
-      <section></section>
+      <section>
+        <Row title="Trending Now" movies={trendingNow} />
+        <Row title="Top Rated" movies={topRated} />
+        <Row title="Action Thrilers" movies={actionMovies} />
+
+        {/*My List*/}
+
+        <Row title="Comedy" movies={comedyMovies} />
+        <Row title="Horror Movies" movies={horrorMovies} />
+        <Row title="Romance Movies" movies={romanceMovies} />
+        <Row title="Documentaries" movies={documentaries} />
+      </section>
     </main>
   </div>
   )
