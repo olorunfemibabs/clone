@@ -9,6 +9,12 @@ const nextConfig = {
         port: "",
         //pathname: "/api/**",
       },
+      {
+        protocol: "https",
+        hostname: "assets.nflxext.com",
+        port: "",
+        //pathname: "/api/**",
+      },
     ],
   },
 };
