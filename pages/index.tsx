@@ -4,6 +4,7 @@ import requests from "../utils/requests"
 import { Movie } from "@/typings";
 import Row from "@/components/Row";
 import { error } from "console";
+import Head from "next/head";
 
 
 interface Props {
@@ -31,6 +32,12 @@ export default function Home({
   return (
   <div className="relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]">
   
+    <Head>
+      <title>
+        Home - Netflix
+      </title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
 
     <Header />
     <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
@@ -64,13 +71,13 @@ export const getServerSideProps = async () => {
     documentaries,
   ] = await Promise.all([
     fetch(requests.fetchNetflixOriginals).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchTrending).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchTopRated).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchActionMovies).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchComedyMovies).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchHorrorMovies).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchRomanceMovies).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)}),
-    fetch(requests.fetchDocumentaries).then(response => response.json()).catch((error:Error) => {console.error("originals:", error)})
+    fetch(requests.fetchTrending).then(response => response.json()).catch((error:Error) => {console.error("trending:", error)}),
+    fetch(requests.fetchTopRated).then(response => response.json()).catch((error:Error) => {console.error("topRated:", error)}),
+    fetch(requests.fetchActionMovies).then(response => response.json()).catch((error:Error) => {console.error("actionMovies:", error)}),
+    fetch(requests.fetchComedyMovies).then(response => response.json()).catch((error:Error) => {console.error("comedyMovies:", error)}),
+    fetch(requests.fetchHorrorMovies).then(response => response.json()).catch((error:Error) => {console.error("horrorMovies:", error)}),
+    fetch(requests.fetchRomanceMovies).then(response => response.json()).catch((error:Error) => {console.error("romanceMovies:", error)}),
+    fetch(requests.fetchDocumentaries).then(response => response.json()).catch((error:Error) => {console.error("documentaries:", error)})
   ])
 
   return {
